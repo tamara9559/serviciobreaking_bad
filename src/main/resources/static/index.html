@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Breaking Bad</title>
+    <meta charset="UTF-8">a
+</head>
+<body>
+<div class="container">
+    <!-- Imagen del póster de la serie -->
+    <img th:src="@{static/imagenes/brba.webp}" alt="Breaking Bad Poster">
+
+    <!-- Nombre de la serie -->
+    <h1>Breaking Bad</h1>
+
+    <!-- Creador de la serie y clasificación -->
+    <p><span class="info">Creador:</span> Vince Gilligan</p>
+    <p><span class="info">Clasificación:</span> Drama criminal, Suspenso, Gánsteres, Neo-Wéstern, Humor negro, Tragedia</p>
+
+    <!-- Descripción de la serie -->
+    <p><span class="info">Descripción:</span> El profesor calmado de química de una secundaria,
+        Walter White cree que su vida no puede ser peor. Su salario apenas le alcanza para sostener a su familia,
+        una situación que no mejora cuando su esposa da a luz y su hijo adolescente sufre de parálisis cerebral.
+        Pero Walter queda anonadado cuando se entera que tiene un cáncer terminal. Al concluir que su enfermedad
+        iba a arruinar financieramente a su familia, él toma una decisión desesperada con el fin de ganar más
+        dinero durante el tiempo que le queda.
+    </p>
+
+    <!-- Número de temporadas y año de emisión -->
+    <p><span class="info">Temporadas:</span> <span th:text="${serie.numeroTemporadas}">Número de temporadas</span></p>
+    <p><span class="info">Año de emisión:</span> 2008 - 2013</p>
+</div>
+</body>
+</html>

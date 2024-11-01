@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Capítulos de Temporada</title>
+</head>
+<body>
+<h1>Capítulos de la Temporada: <span th:text="${temporada.temporada}"></span></h1>
+
+<h2>Capítulos</h2>
+<table>
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Nombre</th>
+    <th>Código</th>
+    <th>Descripción</th>
+    <th>Calificación</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="capitulo : ${capitulos}">
+    <td th:text="${capitulo.id}"></td>
+    <td th:text="${capitulo.nombre}"></td>
+    <td th:text="${capitulo.codigo}"></td>
+    <td th:text="${capitulo.descripcion}"></td>
+    <td th:text="${capitulo.calificacion}"></td>
+  </tr>
+  </tbody>
+</table>
+
+<h3>Agregar Nuevo Capítulo</h3>
+<form th:action="@{/temporadas/{id}/capitulos/agregar(id=${temporada.id})}" method="post">
+  <label>Nombre:</label>
+  <input type="text" name="nombre" required>
+  <label>Código:</label>
+  <input type="text" name="codigo" required>
+  <label>Descripción:</label>
+  <textarea name="descripcion" required></textarea>
+  <label>Calificación:</label>
+  <input type="number" step="0.1" name="calificacion" required>
+  <button type="submit">Agregar Capítulo</button>
+</form>
+
+<div th:if="${error}" th:text="${error}"></div>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lista de Temporadas</title>
+</head>
+<body>
+<h1>Temporadas</h1>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Temporada</th>
+        <th>Fecha</th>
+        <th>Número de Capítulos</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="temporada : ${temporadas}">
+        <td th:text="${temporada.id}"></td>
+        <td th:text="${temporada.temporada}"></td>
+        <td th:text="${#dates.format(temporada.fecha, 'yyyy-MM-dd')}"></td>
+        <td th:text="${temporada.capitulos}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Top Capítulos</title>
+</head>
+<body>
+<h1>Top Capítulos por Calificación</h1>
+<table>
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Nombre</th>
+    <th>Código</th>
+    <th>Descripción</th>
+    <th>Calificación</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="capitulo : ${capitulos}">
+    <td th:text="${capitulo.id}"></td>
+    <td th:text="${capitulo.nombre}"></td>
+    <td th:text="${capitulo.codigo}"></td>
+    <td th:text="${capitulo.descripcion}"></td>
+    <td th:text="${capitulo.calificacion}"></td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>

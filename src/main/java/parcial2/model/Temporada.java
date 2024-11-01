@@ -1,11 +1,9 @@
 package parcial2.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Temporada {
@@ -13,9 +11,16 @@ public class Temporada {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     private int temporada;
+
+    @Temporal(TemporalType.DATE)
     private Date fecha;
+
     private int capitulos;
+
+    @OneToMany(mappedBy = "temporada", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Capitulo> capitulosList;
 
     public Temporada() {
     }

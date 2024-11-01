@@ -1,29 +1,50 @@
 package parcial2.model;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Capitulo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     private String nombre;
     private char codigo;
-    private String descricion;
-    private float calificacion;
+    private String descripcion;
+    private double calificacion;
+
+    @ManyToOne
+    @JoinColumn(name = "temporada_id")  // Clave foránea en la tabla capitulo
+    private Temporada temporada;
+
+    private String imagenes;
 
     public Capitulo() {
     }
 
-    public Capitulo(String nombre, char codigo, String descricion, float calificacion) {
+    public Capitulo(String nombre, char codigo, String descripcion, double calificacion, Temporada temporada) {
         this.nombre = nombre;
         this.codigo = codigo;
-        this.descricion = descricion;
+        this.descripcion = descripcion;
         this.calificacion = calificacion;
+        this.temporada = temporada;
+    }
+
+    public String getImagenes() {
+        return imagenes;
+    }
+
+    public void setImagenes(String imagenes) {
+        this.imagenes = imagenes;
+    }
+
+    public Temporada getTemporada() {
+        return temporada;
+    }
+
+    public void setTemporada(Temporada temporada) {
+        this.temporada = temporada;
     }
 
     public int getId() {
@@ -50,19 +71,19 @@ public class Capitulo {
         this.codigo = codigo;
     }
 
-    public String getDescricion() {
-        return descricion;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public void setDescricion(String descricion) {
-        this.descricion = descricion;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
-    public float getCalificacion() {
+    public double getCalificacion() {
         return calificacion;
     }
 
-    public void setCalificacion(float calificacion) {
+    public void setCalificacion(double calificacion) {
         this.calificacion = calificacion;
     }
 }

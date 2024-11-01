@@ -14,12 +14,12 @@ public class Capitulo {
     private String nombre;
     private char codigo;
     private String descricion;
-    private float calificacion;
+    private double calificacion;
 
     public Capitulo() {
     }
 
-    public Capitulo(String nombre, char codigo, String descricion, float calificacion) {
+    public Capitulo(String nombre, char codigo, String descricion, double calificacion) {
         this.nombre = nombre;
         this.codigo = codigo;
         this.descricion = descricion;
@@ -58,11 +58,11 @@ public class Capitulo {
         this.descricion = descricion;
     }
 
-    public float getCalificacion() {
+    public double getCalificacion() {
         return calificacion;
     }
 
-    public void setCalificacion(float calificacion) {
+    public void setCalificacion(double calificacion) {
         this.calificacion = calificacion;
     }
 }

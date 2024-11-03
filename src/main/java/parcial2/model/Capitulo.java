@@ -10,7 +10,7 @@ public class Capitulo {
     private int id;
 
     private String nombre;
-    private char codigo;
+    private String codigo;
     private String descripcion;
     private double calificacion;
 
@@ -23,12 +23,13 @@ public class Capitulo {
     public Capitulo() {
     }
 
-    public Capitulo(String nombre, char codigo, String descripcion, double calificacion, Temporada temporada) {
+    public Capitulo(String nombre, String codigo, String descripcion, double calificacion, Temporada temporada, String imagenes) {
         this.nombre = nombre;
         this.codigo = codigo;
         this.descripcion = descripcion;
         this.calificacion = calificacion;
         this.temporada = temporada;
+        this.imagenes = imagenes;
     }
 
     public String getImagenes() {
@@ -63,11 +64,11 @@ public class Capitulo {
         this.nombre = nombre;
     }
 
-    public char getCodigo() {
+    public String getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(char codigo) {
+    public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
 

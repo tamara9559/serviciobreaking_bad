@@ -1,23 +1,35 @@
-<!-- header.html - Fragmento de encabezado y navegación -->
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <style>
+    .header {
+      background-color: #1a1a1a;
+      color: #8bc34a;
+      padding: 10px;
+      text-align: center;
+    }
+    .header a {
+      color: #8bc34a;
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .header a:hover {
+      color: #cddc39;
+    }
+  </style>
+</head>
 <body>
-<!-- Encabezado -->
-<header>
-  <h1 th:text="${nombreSerie}">Nombre de la Serie</h1>
-  <p><strong>Temporadas:</strong> <span th:text="${numTemporadas}">0</span></p>
-  <p><strong>Capítulos:</strong> <span th:text="${numCapitulos}">0</span></p>
-</header>
-
-<!-- Barra de Navegación -->
-<nav>
-  <ul>
-    <li><a th:href="@{/index}">Inicio</a></li>
-    <li><a th:href="@{/temporada}">Temporadas</a></li>
-    <li><a th:href="@{/capsxtemp}">Capítulos por Temporada</a></li>
-    <li><a th:href="@{/capitulosTop}">Capítulos Top</a></li>
-    <li><a th:href="@{/actores}">Actores</a></li>
-  </ul>
-</nav>
+<div class="header" th:fragment="headerFragment">
+  <h1>Breaking Bad</h1>
+  <nav>
+    <a th:href="@{/index}">Inicio</a>
+    <a th:href="@{/temporada}">Temporadas</a>
+    <a th:href="@{/capsxtemp}">Capítulos</a>
+    <a th:href="@{/capitulosTop}">Capítulos Top</a>
+    <a th:href="@{/actores}">Actores</a>
+  </nav>
+</div>
 </body>
 </html>
+

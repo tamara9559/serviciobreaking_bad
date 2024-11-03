@@ -19,14 +19,24 @@ import java.util.List;
 public class TempController {
 
     @Autowired
-    private RepoTemporada temporadaRepository;
+    private RepoTemporada repoTemporada;
 
     @Autowired
     private RepoCapitulo repoCapitulo;
 
+
+    public TempController(RepoTemporada repoTemporada) {
+        this.repoTemporada = repoTemporada;
+    }
+
+    @GetMapping
+    public List<Temporada> listarTemporadas() {
+        return repoTemporada.findAll();
+    }
+
     @GetMapping("/temporadas")
     public String listarTemporadas(Model model) {
-        List<Temporada> temporadas = temporadaRepository.findAll();
+        List<Temporada> temporadas = repoTemporada.findAll();
         model.addAttribute("temporadas", temporadas);
         return "temporadas";
     }
@@ -41,7 +51,7 @@ public class TempController {
     // Listar capítulos por temporada
     @GetMapping("/temporadas/{id}/capitulos")
     public String listarCapitulosPorTemporada(@PathVariable int id, Model model) {
-        Temporada temporada = temporadaRepository.findById(id).orElse(null);
+        Temporada temporada = repoTemporada.findById(id).orElse(null);
         if (temporada != null) {
             List<Capitulo> capitulos = repoCapitulo.findByTemporada(temporada);
             model.addAttribute("temporada", temporada);
@@ -55,9 +65,9 @@ public class TempController {
     // Agregar un nuevo capítulo
     @PostMapping("/temporadas/{id}/capitulos/agregar")
     public String agregarCapitulo(@PathVariable int id, @RequestParam String nombre,
-                                  @RequestParam char codigo, @RequestParam String descripcion,
+                                  @RequestParam String codigo, @RequestParam String descripcion,
                                   @RequestParam double calificacion) {
-        Temporada temporada = temporadaRepository.findById(id).orElse(null);
+        Temporada temporada = repoTemporada.findById(id).orElse(null);
         if (temporada != null) {
             Capitulo nuevoCapitulo = new Capitulo();
             nuevoCapitulo.setNombre(nombre);

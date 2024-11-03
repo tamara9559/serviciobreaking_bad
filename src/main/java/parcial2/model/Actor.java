@@ -9,7 +9,7 @@ import java.util.List;
 public class Actor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
 
     private String nombre;
     private String descripcion;
@@ -27,6 +27,8 @@ public class Actor {
     public Actor() {
     }
 
+
+
     public Actor(String nombre, String descripcion, String personaje, String foto, List<Temporada> temporadas) {
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -35,11 +37,11 @@ public class Actor {
         this.temporadas = temporadas;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

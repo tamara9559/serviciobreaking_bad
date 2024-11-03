@@ -13,11 +13,22 @@ import java.util.List;
 @Controller
 public class ActController {
     @Autowired
-    private RepoActor actorRepository;
+    private RepoActor repoActor;
 
-    @GetMapping("/temporada/{id}/actores")
+
+
+    public ActController(RepoActor repoActor) {
+        this.repoActor = repoActor;
+    }
+
+    @GetMapping("/personajes")
+    public List<Actor> listarPersonajes() {
+        return repoActor.findAll();
+    }
+
+    @GetMapping("/temporada/{id}/actoresT")
     public String obtenerActoresPorTemporada(@PathVariable int id, Model model) {
-        List<Actor> actores = actorRepository.findActorsByTemporada((long) id);
+        List<Actor> actores = repoActor.findActorsByTemporada((long) id);
         model.addAttribute("actores", actores);
         return "actores"; // Nombre de la vista Thymeleaf
     }

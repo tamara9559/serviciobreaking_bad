@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Actores por Temporada</title>
+</head>
+<body>
+
+<div th:insert="fragments/header :: header"></div>
+<h1>Actores Principales</h1>
+
+<div th:each="actor : ${actores}">
+    <h2 th:text="${actor.nombre}">Nombre del Actor</h2>
+    <p><strong>Personaje:</strong> <span th:text="${actor.personaje}">Nombre del Personaje</span></p>
+    <p><strong>Descripción:</strong> <span th:text="${actor.descripcion}">Descripción del Actor</span></p>
+    <img th:src="${actor.foto}" alt="Foto del Actor" style="width: 150px; height: auto;"/>
+
+    <h4>Temporadas en las que aparece:</h4>
+    <ul>
+        <li th:each="temporada : ${actor.temporadas}" th:text="'Temporada ' + ${temporada.temporada}">Temporada</li>
+    </ul>
+</div>
+
+<div th:insert="fragments/footer :: footer"></div>
+</body>
+</html>

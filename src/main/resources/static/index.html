@@ -5,6 +5,8 @@
     <meta charset="UTF-8">a
 </head>
 <body>
+<div th:insert="fragments/header :: header"></div>
+
 <div class="container">
     <!-- Imagen del póster de la serie -->
     <img th:src="@{static/imagenes/brba.webp}" alt="Breaking Bad Poster">
@@ -29,5 +31,7 @@
     <p><span class="info">Temporadas:</span> <span th:text="${serie.numeroTemporadas}">Número de temporadas</span></p>
     <p><span class="info">Año de emisión:</span> 2008 - 2013</p>
 </div>
+
+<div th:insert="fragments/footer :: footer"></div>
 </body>
 </html>

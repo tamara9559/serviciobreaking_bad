@@ -4,6 +4,8 @@
   <title>Capítulos de Temporada</title>
 </head>
 <body>
+
+<div th:insert="fragments/header :: header"></div>
 <h1>Capítulos de la Temporada: <span th:text="${temporada.temporada}"></span></h1>
 
 <h2>Capítulos</h2>
@@ -42,5 +44,7 @@
 </form>
 
 <div th:if="${error}" th:text="${error}"></div>
+
+<div th:insert="fragments/footer :: footer"></div>
 </body>
 </html>

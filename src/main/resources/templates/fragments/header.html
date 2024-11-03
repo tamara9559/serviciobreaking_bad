@@ -25,11 +25,11 @@
   <nav>
     <a th:href="@{/index}">Inicio</a>
     <a th:href="@{/temporada}">Temporadas</a>
-    <a th:href="@{/capsxtemp}">Capítulos</a>
-    <a th:href="@{/capitulosTop}">Capítulos Top</a>
-    <a th:href="@{/actores}">Actores</a>
+    <a th:href="@{/capitulos/top}">Capítulos Top</a>
+    <a th:href="@{/temporada/{id}/actoresT(id=1)}">Actores</a>
+    <!-- Enlace a los capítulos de una temporada específica, utilizando un ID dinámico -->
+    <a th:href="@{/temporadas/{id}/capitulos(id=1)}">Capítulos de la Temporada:</a>
   </nav>
 </div>
 </body>
 </html>
-

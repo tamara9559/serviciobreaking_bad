@@ -7,20 +7,25 @@
 <body>
 
 <!-- Fragmento de encabezado -->
-<div th:replace="fragments/header :: headerFragment"></div>
+<div th:replace="~{fragments/header :: headerFragment}"></div>
 
 <div class="container">
     <img th:src="@{/imagenes/brba.webp}" alt="Breaking Bad Poster" style="width: 200px; height: auto;">
     <h1>Breaking Bad</h1>
     <p><span class="info">Creador:</span> Vince Gilligan</p>
     <p><span class="info">Clasificación:</span> Drama criminal, Suspenso, Gánsteres, Neo-Wéstern, Humor negro, Tragedia</p>
-    <p><span class="info">Descripción:</span> El profesor calmado de química de una secundaria...</p>
+    <p><span class="info">Descripción:</span>Walter White decide entrar en el mundo de las drogas ilegales después de que le diagnosticaran cáncer de pulmón.
+        Al ser profesor de química, utiliza sus conocimientos y habilidades para elaborar una metanfetamina junto a un
+        antiguo alumno, Jesse Pinkman (Aaron Paul). Durante sus primeros días, como productores de droga, tienen varios
+        problemas con los distribuidores locales. Además, empiezan a ser famosos, gracias a la droga que producen, y
+        amplían territorio. Walt se crea un apodo, Heisenberg, para darse a conocer en su segunda vida.</p>
     <p><span class="info">Temporadas:</span> <span th:text="7">Número de temporadas</span></p>
     <p><span class="info">Año de emisión:</span> 2008 - 2013</p>
 </div>
 
 <!-- Fragmento de pie de página -->
-<div th:replace="fragments/footer :: footer"></div>
+<div th:replace="~{fragments/footer :: footer}"></div>
 
 </body>
 </html>
+

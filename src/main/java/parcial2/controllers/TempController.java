@@ -4,10 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import parcial2.model.Capitulo;
 import parcial2.model.Temporada;
 import parcial2.repository.RepoCapitulo;
@@ -29,16 +26,17 @@ public class TempController {
         this.repoTemporada = repoTemporada;
     }
 
-    @GetMapping
-    public List<Temporada> listarTemporadas() {
+    @GetMapping("/temporadas")
+    public List<Temporada> listarTodasLasTemporadas() {
         return repoTemporada.findAll();
     }
 
-    @GetMapping("/temporadas")
+
+    @GetMapping("/temporada")
     public String listarTemporadas(Model model) {
         List<Temporada> temporadas = repoTemporada.findAll();
         model.addAttribute("temporadas", temporadas);
-        return "temporadas";
+        return "temporada";
     }
 
     @GetMapping("/capitulos/top")
@@ -62,6 +60,7 @@ public class TempController {
         return "capsxtemp"; // Vista para mostrar capítulos
     }
 
+
     // Agregar un nuevo capítulo
     @PostMapping("/temporadas/{id}/capitulos/agregar")
     public String agregarCapitulo(@PathVariable int id, @RequestParam String nombre,
@@ -79,5 +78,22 @@ public class TempController {
         }
         return "redirect:/temporadas/" + id + "/capitulos"; // Redirigir después de agregar
     }
+
+    @RestController
+    @RequestMapping("/api/temporadas")
+    public class TemporadaController {
+
+        private final RepoTemporada repoTemporada;
+
+        public TemporadaController(RepoTemporada repoTemporada) {
+            this.repoTemporada = repoTemporada;
+        }
+
+        @GetMapping
+        public List<Temporada> listarTemporadas() {
+            return repoTemporada.findAll();
+        }
+    }
+
 }
 

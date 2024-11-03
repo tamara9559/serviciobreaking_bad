@@ -11,7 +11,8 @@ import parcial2.service.ServiceCap;
 
 @Controller
 public class CapController {
-    private final ServiceCap ServiceCap;
+
+    private final ServiceCap serviceCap;
 
     @Autowired
     private RepoCapitulo repoCapitulo;
@@ -19,20 +20,20 @@ public class CapController {
 
     @Autowired
     public CapController(ServiceCap serviceCap) {
-        this.ServiceCap = serviceCap;
+        this.serviceCap = serviceCap;
     }
 
     @GetMapping("/index")
     public String index(Model model) {
-        Capitulo capitulo = ServiceCap.getCapMejor();
+        Capitulo capitulo = serviceCap.getCapMejor();
         model.addAttribute("capitulo", capitulo);
         return "index";
     }
 
     // Método para mostrar los detalles del capítulo
     @GetMapping("/capitulos/{id}/detalles")
-    public String mostrarDetallesCapitulo(@PathVariable int id, Model model) {
-        Capitulo capitulo = repoCapitulo.findById((long) id).orElse(null);
+    public String mostrarDetallesCapitulo(@PathVariable Long id, Model model){
+        Capitulo capitulo = repoCapitulo.findById(id).orElse(null);
         if (capitulo != null) {
             model.addAttribute("capitulo", capitulo);
             String[] imagenesArray = capitulo.getImagenes() != null ? capitulo.getImagenes().split(",") : new String[0];

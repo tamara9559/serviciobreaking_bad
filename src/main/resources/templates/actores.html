@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Actores por Temporada</title>
+    <title>Actores por Temporada</title> <!-- Título de la página -->
 </head>
 <body>
 
-<div th:insert="fragments/header :: headerFragment"></div>
-<h1>Actores Principales</h1>
+<div th:insert="fragments/header :: headerFragment"></div> <!-- Fragmento de encabezado -->
+<h1>Actores Principales</h1> <!-- Encabezado principal -->
 
-<div th:each="actor : ${actores}">
-    <h2 th:text="${actor.nombre}">Nombre del Actor</h2>
-    <p><strong>Personaje:</strong> <span th:text="${actor.personaje}">Nombre del Personaje</span></p>
-    <p><strong>Descripción:</strong> <span th:text="${actor.descripcion}">Descripción del Actor</span></p>
-    <img th:src="${actor.foto}" alt="Foto del Actor" style="width: 150px; height: auto;"/>
+<div th:each="actor : ${actores}"> <!-- Itera sobre la lista de actores -->
+    <h2 th:text="${actor.nombre}">Nombre del Actor</h2> <!-- Nombre del actor -->
+    <p><strong>Personaje:</strong> <span th:text="${actor.personaje}">Nombre del Personaje</span></p> <!-- Personaje interpretado -->
+    <p><strong>Descripción:</strong> <span th:text="${actor.descripcion}">Descripción del Actor</span></p> <!-- Descripción del actor -->
+    <img th:src="${actor.foto}" alt="Foto del Actor" style="width: 150px; height: auto;"/> <!-- Foto del actor -->
 
-    <h4>Temporadas en las que aparece:</h4>
+    <h4>Temporadas en las que aparece:</h4> <!-- Encabezado para la lista de temporadas -->
     <ul>
-        <li th:each="temporada : ${actor.temporadas}" th:text="'Temporada ' + ${temporada.temporada}">Temporada</li>
+        <li th:each="temporada : ${actor.temporadas}" th:text="'Temporada ' + ${temporada.temporada}">Temporada</li> <!-- Lista de temporadas -->
     </ul>
 </div>
 
-<div th:insert="fragments/footer :: footer"></div>
+<div th:insert="fragments/footer :: footer"></div> <!-- Fragmento de pie de página -->
 </body>
 </html>

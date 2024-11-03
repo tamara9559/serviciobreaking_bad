@@ -1,50 +1,51 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>Capítulos de Temporada</title>
+  <title>Capítulos de Temporada</title> <!-- Título de la página -->
 </head>
 <body>
 
-<div th:insert="fragments/header :: headerFragment"></div>
-<h1>Capítulos de la Temporada: <span th:text="${temporada.temporada}"></span></h1>
+<div th:insert="fragments/header :: headerFragment"></div> <!-- Fragmento de encabezado -->
+<h1>Capítulos de la Temporada: <span th:text="${temporada.temporada}"></span></h1> <!-- Título de la temporada -->
 
-<h2>Capítulos</h2>
+<h2>Capítulos</h2> <!-- Subtítulo para la lista de capítulos -->
 <table>
   <thead>
   <tr>
-    <th>ID</th>
-    <th>Nombre</th>
-    <th>Código</th>
-    <th>Descripción</th>
-    <th>Calificación</th>
+    <th>ID</th> <!-- Columna para el ID del capítulo -->
+    <th>Nombre</th> <!-- Columna para el nombre del capítulo -->
+    <th>Código</th> <!-- Columna para el código del capítulo -->
+    <th>Descripción</th> <!-- Columna para la descripción del capítulo -->
+    <th>Calificación</th> <!-- Columna para la calificación del capítulo -->
   </tr>
   </thead>
   <tbody>
-  <tr th:each="capitulo : ${capitulos}">
-    <td th:text="${capitulo.id}"></td>
-    <td th:text="${capitulo.nombre}"></td>
-    <td th:text="${capitulo.codigo}"></td>
-    <td th:text="${capitulo.descripcion}"></td>
-    <td th:text="${capitulo.calificacion}"></td>
+  <tr th:each="capitulo : ${capitulos}"> <!-- Itera sobre la lista de capítulos -->
+    <td th:text="${capitulo.id}"></td> <!-- Muestra el ID del capítulo -->
+    <td th:text="${capitulo.nombre}"></td> <!-- Muestra el nombre del capítulo -->
+    <td th:text="${capitulo.codigo}"></td> <!-- Muestra el código del capítulo -->
+    <td th:text="${capitulo.descripcion}"></td> <!-- Muestra la descripción del capítulo -->
+    <td th:text="${capitulo.calificacion}"></td> <!-- Muestra la calificación del capítulo -->
   </tr>
   </tbody>
 </table>
 
-<h3>Agregar Nuevo Capítulo</h3>
-<form th:action="@{/temporadas/{id}/capitulos/agregar(id=${temporada.id})}" method="post">
-  <label>Nombre:</label>
-  <input type="text" name="nombre" required>
-  <label>Código:</label>
-  <input type="text" name="codigo" required>
-  <label>Descripción:</label>
-  <textarea name="descripcion" required></textarea>
-  <label>Calificación:</label>
-  <input type="number" step="0.1" name="calificacion" required>
-  <button type="submit">Agregar Capítulo</button>
+<h3>Agregar Nuevo Capítulo</h3> <!-- Sección para agregar un nuevo capítulo -->
+<form th:action="@{/temporadas/{id}/capitulos/agregar(id=${temporada.id})}" method="post"> <!-- Formulario para agregar capítulo -->
+  <label>Nombre:</label> <!-- Etiqueta para el campo de nombre -->
+  <input type="text" name="nombre" required> <!-- Campo de entrada para el nombre -->
+  <label>Código:</label> <!-- Etiqueta para el campo de código -->
+  <input type="text" name="codigo" required> <!-- Campo de entrada para el código -->
+  <label>Descripción:</label> <!-- Etiqueta para el campo de descripción -->
+  <textarea name="descripcion" required></textarea> <!-- Campo de entrada para la descripción -->
+  <label>Calificación:</label> <!-- Etiqueta para el campo de calificación -->
+  <input type="number" step="0.1" name="calificacion" required> <!-- Campo de entrada para la calificación -->
+  <button type="submit">Agregar Capítulo</button> <!-- Botón para enviar el formulario -->
 </form>
 
-<div th:if="${error}" th:text="${error}"></div>
+<div th:if="${error}" th:text="${error}"></div> <!-- Mensaje de error si existe -->
 
-<div th:insert="fragments/footer :: footer"></div>
+<div th:insert="fragments/footer :: footer"></div> <!-- Fragmento de pie de página -->
 </body>
 </html>
+

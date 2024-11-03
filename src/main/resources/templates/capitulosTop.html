@@ -1,33 +1,33 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>Top Capítulos</title>
+  <title>Top Capítulos</title> <!-- Título de la página -->
 </head>
 <body>
 
-<div th:insert="fragments/header :: headerFragment"></div>
-<h1>Top Capítulos por Calificación</h1>
+<div th:insert="fragments/header :: headerFragment"></div> <!-- Fragmento de encabezado -->
+<h1>Top Capítulos por Calificación</h1> <!-- Encabezado principal -->
 <table>
   <thead>
   <tr>
-    <th>ID</th>
-    <th>Nombre</th>
-    <th>Código</th>
-    <th>Descripción</th>
-    <th>Calificación</th>
+    <th>ID</th> <!-- Columna para el ID del capítulo -->
+    <th>Nombre</th> <!-- Columna para el nombre del capítulo -->
+    <th>Código</th> <!-- Columna para el código del capítulo -->
+    <th>Descripción</th> <!-- Columna para la descripción del capítulo -->
+    <th>Calificación</th> <!-- Columna para la calificación del capítulo -->
   </tr>
   </thead>
   <tbody>
-  <tr th:each="capitulo : ${capitulos}">
-    <td th:text="${capitulo.id}"></td>
-    <td th:text="${capitulo.nombre}"></td>
-    <td th:text="${capitulo.codigo}"></td>
-    <td th:text="${capitulo.descripcion}"></td>
-    <td th:text="${capitulo.calificacion}"></td>
+  <tr th:each="capitulo : ${capitulos}"> <!-- Itera sobre la lista de capítulos -->
+    <td th:text="${capitulo.id}"></td> <!-- Muestra el ID del capítulo -->
+    <td th:text="${capitulo.nombre}"></td> <!-- Muestra el nombre del capítulo -->
+    <td th:text="${capitulo.codigo}"></td> <!-- Muestra el código del capítulo -->
+    <td th:text="${capitulo.descripcion}"></td> <!-- Muestra la descripción del capítulo -->
+    <td th:text="${capitulo.calificacion}"></td> <!-- Muestra la calificación del capítulo -->
   </tr>
   </tbody>
 </table>
 
-<div th:insert="fragments/footer :: footer"></div>
+<div th:insert="fragments/footer :: footer"></div> <!-- Fragmento de pie de página -->
 </body>
 </html>

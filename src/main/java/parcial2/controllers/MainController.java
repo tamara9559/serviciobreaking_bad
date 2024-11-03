@@ -9,6 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import parcial2.repository.RepoCapitulo;
 import parcial2.repository.RepoTemporada;
 
+/**
+ * Controlador principal de la aplicación que gestiona la carga de datos generales y
+ * la información del pie de página en todas las vistas.
+ */
 @Controller
 public class MainController {
 
@@ -18,6 +22,7 @@ public class MainController {
     @Autowired
     private RepoCapitulo capituloRepository;
 
+    // Valores configurados en el archivo application.properties
     @Value("${estudiante.nombre}")
     private String nombreEstudiante;
 
@@ -27,7 +32,12 @@ public class MainController {
     @Value("${descripcion.ejercicio}")
     private String descripcionEjercicio;
 
-    // Agregar información del pie de página al modelo
+    /**
+     * Agrega información de pie de página a todas las vistas usando el modelo.
+     * La información incluye el nombre del estudiante, la fecha de creación y la descripción del ejercicio.
+     *
+     * @param model El modelo de Spring MVC que permite añadir datos accesibles en todas las vistas.
+     */
     @ModelAttribute
     public void agregarDatosPieDePagina(Model model) {
         model.addAttribute("nombreEstudiante", nombreEstudiante);
@@ -35,21 +45,30 @@ public class MainController {
         model.addAttribute("descripcionEjercicio", descripcionEjercicio);
     }
 
-    // Cargar información general de la serie
+    /**
+     * Agrega información general sobre la serie a todas las vistas.
+     * Incluye el nombre de la serie, el número total de temporadas y capítulos.
+     *
+     * @param model El modelo de Spring MVC que permite añadir datos accesibles en todas las vistas.
+     */
     @ModelAttribute
     public void agregarDatosSerie(Model model) {
-        String nombreSerie = "breaking bad";
-        int numTemporadas = (int) temporadaRepository.count();
-        int numCapitulos = (int) capituloRepository.count();
+        String nombreSerie = "breaking bad"; // Nombre fijo de la serie
+        int numTemporadas = (int) temporadaRepository.count(); // Número total de temporadas
+        int numCapitulos = (int) capituloRepository.count(); // Número total de capítulos
 
         model.addAttribute("nombreSerie", nombreSerie);
         model.addAttribute("numTemporadas", numTemporadas);
         model.addAttribute("numCapitulos", numCapitulos);
     }
 
+    /**
+     * Maneja la solicitud para la página principal de la aplicación.
+     *
+     * @return El nombre de la vista "index" que muestra la página principal.
+     */
     @RequestMapping("/")
     public String mostrarPaginaPrincipal() {
         return "index";
     }
 }
-

@@ -7,17 +7,32 @@ import parcial2.repository.RepoTemporada;
 
 import java.util.List;
 
+/**
+ * Servicio para manejar la lógica relacionada con las temporadas.
+ */
 @Service
 public class TempService {
 
     @Autowired
     private RepoTemporada temporadaRepository;
 
+    /**
+     * Agrega una nueva temporada al repositorio.
+     *
+     * @param temporada La temporada a agregar.
+     * @return La temporada guardada.
+     */
     public Temporada agregarTemporada(Temporada temporada) {
         return temporadaRepository.save(temporada);
     }
 
+    /**
+     * Lista todas las temporadas disponibles.
+     *
+     * @return Una lista de temporadas.
+     */
     public List<Temporada> listarTemporadas() {
         return temporadaRepository.findAll();
     }
 }
+
